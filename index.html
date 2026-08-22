@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realtors Inmobiliaria - Catálogo Exclusivo</title>
+    <style>
+        /* Paleta de Colores Premium */
+        :root { 
+            --primary: #111111; /* Negro Ónice */
+            --secondary: #475569; /* Gris Pizarra */
+            --accent: #D8A520; /* Oro Arquitectónico */
+            --bg: #F8FAFC; /* Blanco Ahumado */
+        }
+        * { box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            margin: 0; padding: 0; 
+            background-color: var(--bg); 
+            color: var(--secondary); 
+        }
+        
+        /* Navegación y Logo */
+        header { 
+            background-color: var(--primary); 
+            padding: 1rem 5%; 
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo-img {
+            height: 65px; /* Ajuste automático del tamaño de tu logo */
+            object-fit: contain;
+        }
+        .btn-whatsapp {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn-whatsapp:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+        
+        /* Hero Section (Landing) */
+        .hero { 
+            text-align: center; 
+            padding: 8rem 2rem 6rem; 
+            background: linear-gradient(rgba(17, 17, 17, 0.85), rgba(17, 17, 17, 0.85)), 
+                        url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80') center/cover; 
+            color: white; 
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; color: var(--accent); letter-spacing: -1px; }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem auto; opacity: 0.9; }
+        
+        /* Barra de Filtros */
+        .filters { 
+            display: flex; gap: 1rem; justify-content: center; 
+            padding: 1.5rem; background: white; 
+            margin: -3rem 5% 3rem; 
+            border-radius: 8px; 
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
+            flex-wrap: wrap; 
+            position: relative;
+            border-top: 4px solid var(--accent);
+        }
+        .filter-group { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; min-width: 200px; }
+        .filter-group label { font-size: 0.85rem; font-weight: 600; color: var(--primary); text-transform: uppercase; }
+        select { 
+            padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 4px; 
+            font-size: 1rem; color: var(--primary); background-color: var(--bg);
+            outline: none; cursor: pointer;
+        }
+        select:focus { border-color: var(--accent); }
+
+        /* Catálogo (Grid) */
+        .catalog-header { padding: 0 5%; margin-bottom: 1.5rem; }
+        .catalog-header h2 { font-size: 2rem; color: var(--primary); }
+        .catalog { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+            gap: 2rem; padding: 0 5% 4rem; 
+        }
+        
+        /* Tarjetas de Inmuebles */
+        .card { 
+            background: white; border-radius: 8px; overflow: hidden; 
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .card-img-wrapper { position: relative; }
+        .card img { width: 100%; height: 260px; object-fit: cover; }
+        .tag { 
+            position: absolute; top: 1rem; left: 1rem;
+            background: var(--primary); color: var(--accent); 
+            padding: 0.4rem 1rem; border-radius: 4px; 
+            font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .card-body { padding: 1.5rem; }
+        .price { font-size: 1.75rem; font-weight: 800; color: var(--accent); margin: 0; }
+        .title { font-size: 1.2rem; font-weight: 600; margin: 0.5rem 0 1rem 0; color: var(--primary); }
+        .location { font-size: 0.9rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .features { 
+            display: flex; justify-content: space-between; 
+            padding-top: 1rem; border-top: 1px solid #e2e8f0;
+            font-size: 0.9rem; font-weight: 500; color: var(--primary);
+        }
+        
+        /* Footer */
+        footer { 
+            background: var(--primary); color: white; text-align: center; padding: 3rem 2rem; 
+            border-top: 2px solid var(--accent);
+        }
+        .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1.5rem; }
+        .social-links a { color: var(--accent); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .social-links a:hover { color: white; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Integración de tu logo desde la carpeta assets -->
+        <a href="#">
+            <img src="assets/Realtors.jpg" alt="Realtors Inmobiliaria Logo" class="logo-img">
+        </a>
+        <nav>
+            <!-- Reemplaza el número de teléfono con el tuyo -->
+            <a href="https://wa.me/51999999999" target="_blank" class="btn-whatsapp">WhatsApp</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Exclusividad y Confianza</h1>
+        <p>Encuentra el inmueble ideal con el respaldo y la asesoría profesional que mereces. Explora nuestro portafolio seleccionado.</p>
+    </section>
+
+    <section class="filters">
+        <div class="filter-group">
+            <label for="opFilter">Operación</label>
+            <select id="opFilter">
+                <option value="all">Ver Todo</option>
+                <option value="Venta">Ventas</option>
+                <option value="Alquiler">Alquileres</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="typeFilter">Tipo de Inmueble</label>
+            <select id="typeFilter">
+                <option value="all">Ver Todo</option>
+                <option value="Departamento">Departamentos</option>
+                <option value="Casa">Casas</option>
+                <option value="Terreno">Terrenos</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="distritoFilter">Distrito / Zona</label>
+            <select id="distritoFilter">
+                <option value="all">Todas las zonas</option>
+                <option value="Miraflores">Miraflores</option>
+                <option value="San Isidro">San Isidro</option>
+                <option value="Surco">Santiago de Surco</option>
+                <option value="Arequipa">Arequipa (Centro)</option>
+            </select>
+        </div>
+    </section>
+
+    <div class="catalog-header">
+        <h2 id="resultsCount">Propiedades Destacadas</h2>
+    </div>
+
+    <section class="catalog" id="catalog">
+        <!-- Generado dinámicamente -->
+    </section>
+
+    <footer>
+        <h3>Realtors Inmobiliaria EIRL</h3>
+        <p style="opacity: 0.7; font-size: 0.9rem; margin-top: 0.5rem;">Tu socio estratégico en bienes raíces</p>
+        <div class="social-links">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">LinkedIn</a>
+        </div>
+        <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Realtors Inmobiliaria EIRL. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const propiedades = [
+            { 
+                id: 1, title: "Moderno Dpto con Vista al Mar", type: "Departamento", op: "Venta", distrito: "Miraflores",
+                price: "$ 220,000", img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80", 
+                beds: 3, baths: 2, area: "120m²" 
+            },
+            { 
+                id: 2, title: "Casa de Estreno con Amplio Jardín", type: "Casa", op: "Venta", distrito: "Surco",
+                price: "$ 450,000", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80", 
+                beds: 4, baths: 4, area: "300m²" 
+            },
+            { 
+                id: 3, title: "Flat Corporativo Amoblado", type: "Departamento", op: "Alquiler", distrito: "San Isidro",
+                price: "US$ 1,200 / mes", img: "https://images.unsplash.com/photo-1502672260266-1c1de2d93688?auto=format&fit=crop&w=800&q=80", 
+                beds: 2, baths: 2, area: "95m²" 
+            },
+            { 
+                id: 4, title: "Terreno Comercial en Esquina", type: "Terreno", op: "Venta", distrito: "Arequipa",
+                price: "$ 310,000", img: "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?auto=format&fit=crop&w=800&q=80", 
+                beds: "-", baths: "-", area: "500m²" 
+            }
+        ];
+
+        const catalog = document.getElementById('catalog');
+        const resultsCount = document.getElementById('resultsCount');
+        const opFilter = document.getElementById('opFilter');
+        const typeFilter = document.getElementById('typeFilter');
+        const distritoFilter = document.getElementById('distritoFilter');
+
+        function renderCatalog(data) {
+            catalog.innerHTML = '';
+            if(data.length === 0) {
+                catalog.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color:var(--secondary); font-size:1.2rem;">No se encontraron propiedades con estos filtros.</p>';
+                resultsCount.innerText = "0 Resultados";
+                return;
+            }
+            resultsCount.innerText = data.length === propiedades.length ? "Propiedades Destacadas" : `Resultados (${data.length})`;
+
+            data.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-img-wrapper">
+                        <span class="tag">${p.op}</span>
+                        <img src="${p.img}" alt="${p.title}" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <p class="price">${p.price}</p>
+                        <h3 class="title">${p.title}</h3>
+                        <div class="location">📍 ${p.distrito}</div>
+                        <div class="features">
+                            <span>🛏️ ${p.beds}</span>
+                            <span>🚿 ${p.baths}</span>
+                            <span>📐 ${p.area}</span>
+                        </div>
+                    </div>
+                `;
+                catalog.appendChild(card);
+            });
+        }
+
+        function applyFilters() {
+            let filtered = propiedades;
+            if(opFilter.value !== 'all') filtered = filtered.filter(p => p.op === opFilter.value);
+            if(typeFilter.value !== 'all') filtered = filtered.filter(p => p.type === typeFilter.value);
+            if(distritoFilter.value !== 'all') filtered = filtered.filter(p => p.distrito === distritoFilter.value);
+            renderCatalog(filtered);
+        }
+
+        opFilter.addEventListener('change', applyFilters);
+        typeFilter.addEventListener('change', applyFilters);
+        distritoFilter.addEventListener('change', applyFilters);
+        renderCatalog(propiedades);
+    </script>
+</body>
+</html>
