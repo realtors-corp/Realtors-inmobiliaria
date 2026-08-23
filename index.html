@@ -62,6 +62,38 @@
         .modal-action { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e2e8f0; }
 
         footer { background: var(--primary); color: white; text-align: center; padding: 3rem 2rem; border-top: 2px solid var(--accent); }
+
+        /* =========================================
+           DISEÑO RESPONSIVO (MÓVILES Y TABLETS)
+           ========================================= */
+        @media (max-width: 768px) {
+            /* Ajusta el encabezado y logo */
+            header { flex-direction: column; gap: 1rem; padding: 1rem; text-align: center; }
+            .logo-img { height: 70px; }
+            
+            /* Achica el título gigante de la portada */
+            .hero { padding: 4rem 1rem 3rem; }
+            .hero h1 { font-size: 3rem; letter-spacing: 2px; }
+            .hero p { font-size: 1rem; }
+            
+            /* Reorganiza los filtros en una sola columna */
+            .filters { margin: 1rem 5% 2rem; flex-direction: column; border-top: none; border-left: 4px solid var(--accent); }
+            .filter-group { min-width: 100%; }
+            
+            /* Asegura que el catálogo ocupe el ancho correcto */
+            .catalog { grid-template-columns: 1fr; padding: 0 5% 2rem; gap: 1.5rem; }
+            
+            /* Ajusta la ventana emergente (Modal) */
+            .modal-content { width: 95%; margin-top: 5%; margin-bottom: 5%; }
+            .modal-gallery img { height: 200px; } /* Imágenes más pequeñas en celular */
+            .modal-info { padding: 1.5rem; }
+            .modal-info h2 { font-size: 1.5rem; }
+            .modal-info .price { font-size: 1.8rem; }
+            .features { flex-direction: column; gap: 0.5rem !important; }
+            
+            /* Ajusta el botón de WhatsApp */
+            .modal-action .btn-whatsapp { display: block; text-align: center; padding: 1rem; font-size: 1rem; }
+        }
     </style>
 </head>
 <body>
@@ -80,7 +112,7 @@
         <p>Tu socio estratégico en bienes raíces. Exclusividad, rentabilidad y confianza.</p>
     </section>
 
-    <!-- Filtros omitidos en la vista previa por espacio, pero 100% funcionales en el código -->
+    <!-- Filtros -->
     <section class="filters">
         <div class="filter-group">
             <label>Operación</label>
@@ -115,7 +147,7 @@
     </footer>
 
     <script>
-        // BASE DE DATOS EXTENDIDA: Ahora incluye descripciones e imágenes extra
+        // BASE DE DATOS EXTENDIDA
         const propiedades = [
             { 
                 id: 1, title: "Moderno Dpto con Vista al Mar", type: "Departamento", op: "Venta", distrito: "Miraflores",
@@ -149,7 +181,6 @@
             data.forEach(p => {
                 const card = document.createElement('div');
                 card.className = 'card';
-                // Añadimos el evento onClick a toda la tarjeta
                 card.onclick = () => openModal(p.id); 
                 card.innerHTML = `
                     <div class="card-img-wrapper">
@@ -173,13 +204,11 @@
         function openModal(id) {
             const p = propiedades.find(x => x.id === id);
             
-            // Generar las imágenes de la galería
             let galleryHTML = '';
             p.gallery.forEach(imgUrl => {
                 galleryHTML += `<img src="${imgUrl}" alt="Vista del inmueble">`;
             });
 
-            // Inyectar HTML en el Modal
             modalBody.innerHTML = `
                 <div class="modal-gallery">
                     ${galleryHTML}
@@ -204,25 +233,22 @@
                 </div>
             `;
             modal.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Evita que el fondo haga scroll
+            document.body.style.overflow = 'hidden'; 
         }
 
         function closeModal() {
             modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restaura el scroll
+            document.body.style.overflow = 'auto'; 
         }
 
-        // Cierra el modal si haces clic fuera de la caja blanca
         window.onclick = function(event) {
             if (event.target == modal) {
                 closeModal();
             }
         }
 
-        // Renderizado inicial
         renderCatalog(propiedades);
 
-        // Lógica de Filtros (Simplificada para el ejemplo)
         const applyFilters = () => {
             const op = document.getElementById('opFilter').value;
             const type = document.getElementById('typeFilter').value;
