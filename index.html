@@ -117,19 +117,28 @@
     <section class="filters">
         <div class="filter-group">
             <label>Operación</label>
-            <select id="opFilter"><option value="all">Ver Todo</option><option value="Venta">Ventas</option><option value="Alquiler">Alquileres</option></select>
+            <select id="opFilter">
+                <option value="all">Ver Todo</option>
+                <option value="Venta">Ventas</option>
+                <option value="Alquiler">Alquileres</option>
+            </select>
         </div>
         <div class="filter-group">
             <label>Tipo de Inmueble</label>
-            <select id="typeFilter"><option value="all">Ver Todo</option><option value="Departamento">Departamentos</option><option value="Casa">Casas</option></select>
+            <select id="typeFilter">
+                <option value="all">Ver Todo</option>
+                <option value="Departamento">Departamentos</option>
+                <option value="Casa">Casas</option>
+                <option value="Terreno">Terrenos</option> <!-- AGREGADO: Terrenos -->
+            </select>
         </div>
         <div class="filter-group">
-            <label>Distrito</label>
+            <label>Ubicación</label> <!-- CAMBIADO: De Distrito a Ubicación -->
             <select id="distritoFilter">
                 <option value="all">Todas las zonas</option>
+                <option value="Cusco">Cusco</option>
                 <option value="Miraflores">Miraflores</option>
                 <option value="San Isidro">San Isidro</option>
-                <option value="Cusco">Cusco</option>
             </select>
         </div>
     </section>
@@ -260,9 +269,14 @@
         const applyFilters = () => {
             const op = document.getElementById('opFilter').value;
             const type = document.getElementById('typeFilter').value;
+            const distrito = document.getElementById('distritoFilter').value; // CONECTADO: Ubicación
+
             let filtered = propiedades;
+            
             if(op !== 'all') filtered = filtered.filter(p => p.op === op);
             if(type !== 'all') filtered = filtered.filter(p => p.type === type);
+            if(distrito !== 'all') filtered = filtered.filter(p => p.distrito === distrito); // CONECTADO: Ubicación
+            
             renderCatalog(filtered);
         };
         document.querySelectorAll('select').forEach(s => s.addEventListener('change', applyFilters));
