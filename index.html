@@ -281,5 +281,12 @@
         };
         document.querySelectorAll('select').forEach(s => s.addEventListener('change', applyFilters));
     </script>
+    <script type="module">
+  import { supabase } from './assets/js/supabase.js';
+
+  console.log('Cliente de Supabase inicializado');
+
+  window.supabaseClient = supabase;
+</script>
 </body>
 </html>
