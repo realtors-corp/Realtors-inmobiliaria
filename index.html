@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#20262c">
+  <meta name="description" content="REALTORS conecta personas con oportunidades inmobiliarias en todo el Perú. Compra, vende o alquila propiedades con asesoría personalizada.">
+  <title>REALTORS | Bienes raíces en todo el Perú</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="REALTORS, inicio"><img src="assets/REALTORS-transparente.png" alt="REALTORS"></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#propiedades">Propiedades</a><a href="#servicios">Servicios</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a>
+      <a class="button button-outline nav-cta" href="https://wa.me/51935009770" target="_blank" rel="noopener">Hablemos por WhatsApp <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow eyebrow-light">REAL ESTATE · PERÚ</p>
+        <h1>Conectamos personas<br>con <em>grandes oportunidades.</em></h1>
+        <p class="hero-copy">Compra, vende o invierte en bienes raíces con una asesoría cercana y estratégica, en cualquier parte del Perú.</p>
+        <div class="hero-actions"><a class="button button-bronze" href="#propiedades">Explorar propiedades <span>↗</span></a><a class="text-link light-link" href="#publica">Quiero vender mi propiedad</a></div>
+      </div>
+      <div class="hero-note"><span class="note-line"></span> Oportunidades inmobiliarias en todo el Perú</div>
+    </section>
+
+    <section class="search-wrap" aria-label="Buscar propiedades">
+      <div class="search-heading"><span class="eyebrow">ENCUENTRA TU LUGAR</span><h2>¿Qué estás buscando?</h2></div>
+      <div class="search-grid">
+        <label>Operación<select id="opFilter"><option value="all">Todas las operaciones</option><option value="Venta">Comprar</option><option value="Alquiler">Alquilar</option></select></label>
+        <label>Tipo de inmueble<select id="typeFilter"><option value="all">Todos los inmuebles</option><option value="Casa">Casa</option><option value="Departamento">Departamento</option><option value="Terreno">Terreno</option><option value="Local comercial">Local comercial</option></select></label>
+        <label>Departamento<select id="locationFilter"><option value="all">Todo el Perú</option><option value="Cusco">Cusco</option><option value="Lima">Lima</option><option value="Lambayeque">Lambayeque</option></select></label>
+        <button class="button button-dark" id="searchButton">Buscar propiedades <span>→</span></button>
+      </div>
+      <p class="search-hint">¿No encuentras lo que buscas? <a href="https://wa.me/51935009770?text=Hola%20REALTORS%2C%20quisiera%20ayuda%20para%20encontrar%20una%20propiedad." target="_blank" rel="noopener">Cuéntanos qué necesitas.</a></p>
+    </section>
+
+    <section class="section properties-section" id="propiedades">
+      <div class="section-top"><div><span class="eyebrow">SELECCIÓN REALTORS</span><h2>Propiedades destacadas</h2><p>Explora oportunidades para vivir o invertir.</p></div><span class="result-count" id="resultsCount">1 propiedad</span></div>
+      <div class="property-grid" id="catalog" aria-live="polite"></div>
+      <div class="empty-state" id="emptyState" hidden><h3>Estamos buscando nuevas oportunidades.</h3><p>No encontramos propiedades con esos filtros. Prueba otra ubicación o escríbenos.</p><a class="button button-dark" href="https://wa.me/51935009770" target="_blank" rel="noopener">Consultar por WhatsApp</a></div>
+    </section>
+
+    <section class="services-section" id="servicios">
+      <div class="section section-inner"><div class="section-top"><div><span class="eyebrow eyebrow-light">QUÉ PODEMOS HACER POR TI</span><h2>Decisiones inmobiliarias,<br><em>con respaldo estratégico.</em></h2></div><p class="services-intro">Te acompañamos en cada etapa de tu operación, con atención personalizada y enfoque en tus objetivos.</p></div>
+        <div class="service-grid">
+          <article class="service-card"><span class="service-number">01</span><div class="service-icon">⌂</div><h3>Comprar</h3><p>Encuentra una propiedad alineada con tus necesidades y presupuesto.</p><a href="https://wa.me/51935009770?text=Quiero%20asesor%C3%ADa%20para%20comprar%20una%20propiedad." target="_blank" rel="noopener">Encuentra tu propiedad ↗</a></article>
+          <article class="service-card"><span class="service-number">02</span><div class="service-icon">↗</div><h3>Vender</h3><p>Presentamos tu inmueble a potenciales compradores y gestionamos consultas.</p><a href="#publica">Quiero vender ↗</a></article>
+          <article class="service-card"><span class="service-number">03</span><div class="service-icon">◇</div><h3>Invertir</h3><p>Explora alternativas inmobiliarias para evaluar tu próxima inversión.</p><a href="https://wa.me/51935009770?text=Quiero%20informaci%C3%B3n%20sobre%20oportunidades%20de%20inversi%C3%B3n." target="_blank" rel="noopener">Conversar con un asesor ↗</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="owner-section" id="publica"><div class="owner-copy"><span class="eyebrow">PARA PROPIETARIOS</span><h2>Tu propiedad merece<br>una <em>gran oportunidad.</em></h2><p>Cuéntanos sobre tu inmueble. Queremos conocerlo y conversar contigo sobre las posibilidades de comercialización.</p><a class="button button-bronze" href="https://wa.me/51935009770?text=Hola%20REALTORS%2C%20soy%20propietario%20y%20quiero%20ofrecer%20mi%20inmueble." target="_blank" rel="noopener">Ofrecer mi propiedad <span>↗</span></a></div><div class="owner-visual"><div class="owner-stat"><strong>PERÚ</strong><span>Alcance nacional</span></div></div></section>
+
+    <section class="about-section section" id="nosotros"><div class="about-mark">R.</div><div class="about-copy"><span class="eyebrow">QUIÉNES SOMOS</span><h2>Tu socio estratégico<br>en bienes raíces.</h2><p>En REALTORS conectamos personas con oportunidades inmobiliarias. Trabajamos para ofrecer una experiencia clara, cercana y profesional a quienes desean comprar, vender o invertir.</p><div class="values"><span>Confianza</span><span>Compromiso</span><span>Visión estratégica</span></div></div></section>
+  </main>
+
+  <footer id="contacto"><div class="footer-main"><div><img class="footer-logo" src="assets/REALTORS-transparente.png" alt="REALTORS"><p>Conectamos personas con grandes oportunidades.</p></div><div><span class="footer-label">EXPLORA</span><a href="#propiedades">Propiedades</a><a href="#servicios">Servicios</a><a href="#nosotros">Nosotros</a></div><div><span class="footer-label">CONTACTO</span><a href="https://wa.me/51935009770" target="_blank" rel="noopener">WhatsApp: +51 935 009 770</a><span>Atención en todo el Perú</span></div></div><div class="footer-bottom"><span>© <span id="year"></span> REALTORS. Todos los derechos reservados.</span><span>REAL ESTATE · PERÚ</span></div></footer>
+
+  <div class="modal" id="propertyModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Detalle de propiedad"><div class="modal-backdrop" data-close></div><div class="modal-panel"><button class="modal-close" id="closeModal" aria-label="Cerrar">×</button><div id="modalBody"></div></div></div>
+  <a class="floating-whatsapp" href="https://wa.me/51935009770" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">✆</a>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
